@@ -38,9 +38,9 @@
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li th:if="${loggedIn}" th:classappend="${active == 'Home'} ? active"><a href="#">Home</a></li>
-					<li th:if="${loggedIn}" th:classappend="${active == 'About'} ? active"><a href="#about">About</a></li>
-					<li th:if="${loggedIn}" th:classappend="${active == 'Contact'} ? active"><a href="#contact">Contact</a></li>
+					<li th:if="${loggedIn}" th:classappend="${active == 'Home'} ? active"><a th:href="@{/}">Home</a></li>
+					<li th:if="${loggedIn}" th:classappend="${active == 'Processes'} ? active"><a th:href="@{/processes/}">Processes</a></li>
+					<li th:if="${loggedIn}" th:classappend="${active == 'CamundaWebapps'} ? active"><a th:href="@{/app/}">Camunda Webapps</a></li>
 				</ul>
 				<ul th:if="${loggedIn}" class="nav navbar-nav navbar-right">
 					<li><a th:href="@{/logout}">Logout</a></li>

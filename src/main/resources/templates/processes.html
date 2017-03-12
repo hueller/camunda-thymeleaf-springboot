@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments :: head(title='Login')">
+</head>
+
+<body>
+	<nav th:replace="fragments :: navbar(active='Processes', loggedIn='true')"></nav>
+
+	<div class="container">
+		<h1>Processes</h1>
+	</div>
+	<!-- /.container -->
+
+	<div th:replace="fragments :: bootstrap_js"></div>
+</body>
+</html>
