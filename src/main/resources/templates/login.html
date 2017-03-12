@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments :: head(title='Login')">
+</head>
+
+<body>
+	<nav th:replace="fragments :: navbar"></nav>
+
+	<div class="container">
+		<div class="content">
+			<h2>camunda BPM Spring Boot</h2>
+			
+			<p th:if="${param.logout == null and param.error == null}" class="alert alert-info">Bitte melden Sie sich mit Ihren Zugangsdaten an.</p>
+			<p th:if="${param.logout}" class="alert alert-success">Sie haben sich erfolgreich abgemeldet.</p>
+			<p th:if="${param.error}" class="alert alert-danger">Die Anmeldung war nicht erfolgreich. Bitte prüfen Sie Ihre Zugangsdaten.</p>
+			
+			<form th:action="@{/login}" class="form-signin" method="post">
+				<label for="username" class="sr-only">Benutzername</label>
+				<input id="username" name="username" class="form-control" placeholder="Username" required="required" autofocus="autofocus" />
+				<label for="password" class="sr-only">Password</label>
+				<input type="password" id="password" name="password" class="form-control" placeholder="Password" required="required" />
+				<button class="btn btn-lg btn-primary btn-block" type="submit">Anmelden</button>
+			</form>
+		</div>
+	</div>
+	<!-- /.container -->
+
+	<div th:replace="fragments :: bootstrap_js"></div>
+</body>
+</html>

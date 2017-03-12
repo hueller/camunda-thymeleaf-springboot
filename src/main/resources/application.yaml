@@ -1,0 +1,10 @@
+spring:
+  thymeleaf:
+    cache: false
+
+camunda.bpm:
+  webapp:
+    index-redirect-enabled: false
+  admin-user:
+    id: admin
+    password: admin

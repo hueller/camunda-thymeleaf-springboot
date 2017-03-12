@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+</head>
+
+<body>
+	<div class="container">
+		<h1>Title</h1>
+		<div id="created" th:text="${#dates.format(timestamp)}"></div>
+		<div>
+			There was an unexpected error (type=<span th:text="${error}"></span>, status=<span th:text="${status}"></span>).
+		</div>
+		<div th:text="${message}"></div>
+		<div>Please contact the operator with the above information.</div>
+	</div>
+</body>
+
+</html>
