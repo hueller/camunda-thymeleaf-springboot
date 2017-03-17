@@ -23,7 +23,7 @@
 				<div class="form-group" th:classappend="${#fields.hasErrors('text')} ? 'has-error'">
 					<label class="col-md-1 control-label" for="text">Text</label>
 					<div class="col-md-10">
-						<input class="form-control" placeholder="Text" id="text" name="text" type="text" th:field="*{text}" />
+						<input class="form-control" placeholder="Text" autofocus="autofocus" id="text" name="text" type="text" th:field="*{text}" />
 					</div>
 					<div class="col-md-1">
 						<button class="btn btn-primary" type="submit">Start</button>
