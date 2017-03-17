@@ -49,6 +49,10 @@
 			<!--/.nav-collapse -->
 		</div>
 	</nav>
+	
+	<div th:fragment="global_message">
+		<p th:if="${globalMessage}" th:text="${globalMessage}" class="alert alert-success" />
+	</div>
 
 	<div th:fragment="bootstrap_js">
 		<!-- Bootstrap core JavaScript ================================================== -->

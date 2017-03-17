@@ -11,6 +11,8 @@
 		<div class="content">
 			<h2>Login</h2>
 			
+			<div th:replace="fragments :: global_message"></div>
+			
 			<p th:if="${param.logout == null and param.error == null}" class="alert alert-info">Please login using your credentials.</p>
 			<p th:if="${param.logout}" class="alert alert-success">Logout successfully.</p>
 			<p th:if="${param.error}" class="alert alert-danger">Error while trying to login. Please check your credentials.</p>
