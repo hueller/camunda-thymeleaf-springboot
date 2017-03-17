@@ -24,6 +24,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 			.authorizeRequests()
 				.antMatchers("/login").permitAll()
 				.antMatchers("/app/**", "/lib/**", "/api/**").permitAll() // Required by Camunda Webapps
+				.antMatchers("/img/**", "/css/**", "/js/**", "/fonts/**").permitAll() // Static resources
 				.anyRequest().authenticated();
 		// @formatter:on
 	}
