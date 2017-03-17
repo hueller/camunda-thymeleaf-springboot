@@ -13,6 +13,14 @@ body {
 	margin-right: 5px;
 }
 
-.top-buffer {
+.top-buffer-sm {
+	margin-top: 10px;
+}
+
+.top-buffer-md {
+	margin-top: 20px;
+}
+
+.top-buffer-lg {
 	margin-top: 30px;
 }

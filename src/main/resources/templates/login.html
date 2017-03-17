@@ -10,8 +10,11 @@
 	<div class="container">
 		<div class="content">
 			<div th:replace="fragments :: global_message"></div>
+			
+			<p th:if="${param.logout}" class="alert alert-success top-buffer-md">Logout successfully.</p>
+			<p th:if="${param.error}" class="alert alert-danger top-buffer-md">Authentication error. Please check your credentials.</p>
 
-			<div class="row top-buffer">
+			<div class="row top-buffer-lg">
 				<div class="col-md-12">
 					<p class="text-center">
 						<img alt="HS Ansbach" th:src="@{/img/hsansbach_500px.png}" />
