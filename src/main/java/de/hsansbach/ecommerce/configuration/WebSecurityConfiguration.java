@@ -24,7 +24,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 			.authorizeRequests()
 				.antMatchers("/login").permitAll()
 				.antMatchers("/app/**", "/lib/**", "/api/**").permitAll() // Required by Camunda Webapps
-				.antMatchers("/messages/**").hasAnyRole("ADMIN", "USER")
 				.anyRequest().authenticated();
 		// @formatter:on
 	}
