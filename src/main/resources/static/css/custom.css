@@ -1,11 +1,16 @@
 body {
   padding-top: 50px;
-  background-color: #eee;
+  background-color: #fff;
 }
 
 .main-container {
   padding: 40px 15px;
   text-align: center;
+}
+
+.navbar-brand.full {
+	padding: 2px;
+	margin-right: 5px;
 }
 
 .form-signin {
