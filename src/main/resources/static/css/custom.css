@@ -1,11 +1,11 @@
 body {
-  padding-top: 50px;
-  background-color: #fff;
+	padding-top: 50px;
+	background-color: #fff;
 }
 
 .main-container {
-  padding: 40px 15px;
-  text-align: center;
+	padding: 40px 15px;
+	text-align: center;
 }
 
 .navbar-brand.full {
@@ -13,3 +13,6 @@ body {
 	margin-right: 5px;
 }
 
+.top-buffer {
+	margin-top: 30px;
+}

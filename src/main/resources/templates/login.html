@@ -10,9 +10,24 @@
 	<div class="container">
 		<div class="content">
 			<div th:replace="fragments :: global_message"></div>
+
+			<div class="row top-buffer">
+				<div class="col-md-12">
+					<p class="text-center">
+						<img alt="HS Ansbach" th:src="@{/img/hsansbach_500px.png}" />
+					</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3">
+					<h2 class="text-center">
+						eBusiness Anwendungsentwicklung<br />Sommersemester 2017
+					</h2>
+				</div>
+			</div>
 		</div>
 	</div>
-	
+
 	<div th:replace="fragments :: bootstrap_js"></div>
 </body>
 </html>
