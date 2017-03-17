@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="fragments :: head(title='Login')">
+<head th:replace="fragments :: head(title='Home')">
 </head>
 
 <body>
 	<nav th:replace="fragments :: navbar(active='Home', loggedIn='true')"></nav>
 
 	<div class="container">
-		<h1>Home</h1>
+		<h2>Home</h2>
 	</div>
-	<!-- /.container -->
 
 	<div th:replace="fragments :: bootstrap_js"></div>
 </body>

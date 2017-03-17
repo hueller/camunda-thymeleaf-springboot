@@ -1,16 +1,35 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="fragments :: head(title='Login')">
+<head th:replace="fragments :: head(title='Processes')">
 </head>
 
 <body>
 	<nav th:replace="fragments :: navbar(active='Processes', loggedIn='true')"></nav>
 
 	<div class="container">
-		<h1>Processes</h1>
+		<h2>Processes</h2>
+
+		<div class="row">
+			<div class="col-md-12">
+				<h3>Process 'Sample'</h3>
+			</div>
+			<form class="form-horizontal" th:action="@{/processes}" th:object="${processModel}" method="post">
+				<div class="col-md-12" th:if="${#fields.hasErrors('*')}">
+					<p th:each="error : ${#fields.errors('*')}" th:text="${error}" class="alert alert-danger"></p>
+				</div>
+				<div class="form-group" th:classappend="${#fields.hasErrors('text')} ? 'has-error'">
+					<label class="col-md-1 control-label" for="text">Text</label>
+					<div class="col-md-10">
+						<input class="form-control" placeholder="Text" id="text" name="text" type="text" th:field="*{text}" />
+					</div>
+					<div class="col-md-1">
+						<button class="btn btn-primary" type="submit">Start</button>
+					</div>
+				</div>
+			</form>
+		</div>
 	</div>
-	<!-- /.container -->
 
 	<div th:replace="fragments :: bootstrap_js"></div>
 </body>

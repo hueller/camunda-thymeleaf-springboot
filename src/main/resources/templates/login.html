@@ -9,18 +9,18 @@
 
 	<div class="container">
 		<div class="content">
-			<h2>camunda BPM Spring Boot</h2>
+			<h2>Login</h2>
 			
-			<p th:if="${param.logout == null and param.error == null}" class="alert alert-info">Bitte melden Sie sich mit Ihren Zugangsdaten an.</p>
-			<p th:if="${param.logout}" class="alert alert-success">Sie haben sich erfolgreich abgemeldet.</p>
-			<p th:if="${param.error}" class="alert alert-danger">Die Anmeldung war nicht erfolgreich. Bitte prüfen Sie Ihre Zugangsdaten.</p>
+			<p th:if="${param.logout == null and param.error == null}" class="alert alert-info">Please login using your credentials.</p>
+			<p th:if="${param.logout}" class="alert alert-success">Logout successfully.</p>
+			<p th:if="${param.error}" class="alert alert-danger">Error while trying to login. Please check your credentials.</p>
 			
 			<form th:action="@{/login}" class="form-signin" method="post">
-				<label for="username" class="sr-only">Benutzername</label>
+				<label for="username" class="sr-only">User</label>
 				<input id="username" name="username" class="form-control" placeholder="Username" required="required" autofocus="autofocus" />
 				<label for="password" class="sr-only">Password</label>
 				<input type="password" id="password" name="password" class="form-control" placeholder="Password" required="required" />
-				<button class="btn btn-lg btn-primary btn-block" type="submit">Anmelden</button>
+				<button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
 			</form>
 		</div>
 	</div>

@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="fragments :: head(title='Login')">
+<head th:replace="fragments :: head(title='Error')">
 </head>
 
 <body>
-	<nav th:replace="fragments :: navbar(active='Home', loggedIn='true')"></nav>
+	<nav th:replace="fragments :: navbar(loggedIn='true')"></nav>
 
 	<div class="container">
-		<h1>Error</h1>
+		<h2>Error</h2>
+		
 		<div id="created" th:text="${#dates.format(timestamp)}"></div>
 		<div>
 			There was an unexpected error (type=<span th:text="${error}"></span>, status=<span th:text="${status}"></span>).
@@ -16,7 +17,6 @@
 		<div th:text="${message}"></div>
 		<div>Please contact the operator with the above information.</div>
 	</div>
-	<!-- /.container -->
 
 	<div th:replace="fragments :: bootstrap_js"></div>
 </body>
