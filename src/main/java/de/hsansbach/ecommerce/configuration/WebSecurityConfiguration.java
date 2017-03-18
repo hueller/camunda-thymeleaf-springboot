@@ -15,6 +15,9 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		// @formatter:off
 		http
+			.headers()
+				.frameOptions().disable() // Required for H2 console
+				.and()
 			.csrf()
 				.disable() // CSRF protection is not supported by Camunda Webapps
 			.formLogin()
@@ -23,7 +26,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.and()
 			.authorizeRequests()
 				.antMatchers("/login").permitAll()
-				.antMatchers("/app/**", "/lib/**", "/api/**").permitAll() // Required by Camunda Webapps
+				.antMatchers("/app/**", "/lib/**", "/api/**").permitAll() // Required for Camunda Webapps
+				.antMatchers("/h2-console/**").permitAll() // Required for H2 console
 				.antMatchers("/img/**", "/css/**", "/js/**", "/fonts/**").permitAll() // Static resources
 				.anyRequest().authenticated();
 		// @formatter:on
