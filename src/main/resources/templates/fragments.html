@@ -51,7 +51,8 @@
 					<li th:if="${loggedIn}" th:classappend="${active == 'Home'} ? active"><a th:href="@{/}">Home</a></li>
 					<li th:if="${loggedIn}" th:classappend="${active == 'Processes'} ? active"><a th:href="@{/processes/}">Processes</a></li>
 					<li th:if="${loggedIn}" th:classappend="${active == 'Tasks'} ? active"><a th:href="@{/tasks/}">Tasks</a></li>
-					<li th:if="${loggedIn}" th:classappend="${active == 'CamundaWebapps'} ? active"><a th:href="@{/app/}" target="_blank">Camunda Webapps</a></li>
+					<li th:if="${loggedIn}"><a th:href="@{/app/}" target="_blank">Camunda Webapps</a></li>
+					<li th:if="${loggedIn}"><a th:href="@{/h2-console/}" target="_blank">H2 Console</a></li>
 				</ul>
 				<ul th:if="${loggedIn}" class="nav navbar-nav navbar-right">
 					<li><a th:href="@{/logout}">Logout</a></li>
