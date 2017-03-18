@@ -1,5 +1,5 @@
-camunda-springboot
-==================
+camunda-thymeleaf-springboot
+============================
 
 Working project for lecture 'eBusiness Anwendungsentwicklung' at Ansbach University of Applied Sciences, 2017
 

@@ -10,7 +10,7 @@
 	</parent>
 
 	<groupId>de.hsansbach.ecommerce</groupId>
-	<artifactId>camunda-springboot</artifactId>
+	<artifactId>camunda-thymeleaf-springboot</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
