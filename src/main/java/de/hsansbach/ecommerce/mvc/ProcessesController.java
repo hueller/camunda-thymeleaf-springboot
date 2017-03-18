@@ -5,7 +5,6 @@ import java.util.Map;
 
 import javax.validation.Valid;
 
-import org.camunda.bpm.engine.RuntimeService;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
@@ -18,15 +17,16 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import de.hsansbach.ecommerce.mvc.model.ProcessModel;
+import de.hsansbach.ecommerce.process.CamundaProcessService;
 
 @Controller
 @RequestMapping("/processes")
 public class ProcessesController {
 
-	private RuntimeService runtimeService;
+	private CamundaProcessService camundaProcessService;
 
-	public ProcessesController(RuntimeService runtimeService) {
-		this.runtimeService = runtimeService;
+	public ProcessesController(CamundaProcessService camundaProcessService) {
+		this.camundaProcessService = camundaProcessService;
 	}
 
 	@GetMapping()
@@ -44,7 +44,7 @@ public class ProcessesController {
 		Map<String, Object> variables = new HashMap<>();
 		variables.put("assignee", user.getUsername());
 		variables.put("text", processModel.getText());
-		runtimeService.startProcessInstanceByKey("Sample", variables);
+		camundaProcessService.startProcess("Sample", variables);
 
 		redirect.addFlashAttribute("globalMessage", "Successfully started process 'Sample'.");
 		return new ModelAndView("redirect:/processes");
