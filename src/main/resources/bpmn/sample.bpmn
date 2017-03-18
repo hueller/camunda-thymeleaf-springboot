@@ -4,20 +4,25 @@
     <bpmn2:startEvent id="StartEvent" name="Start">
       <bpmn2:outgoing>Flow_StartEvent_Ok</bpmn2:outgoing>
     </bpmn2:startEvent>
-    <bpmn2:sequenceFlow id="Flow_StartEvent_Ok" sourceRef="StartEvent" targetRef="ServiceTask_Dummy"/>
-    <bpmn2:endEvent id="EndEvent" name="End">
-      <bpmn2:incoming>Flow_UserTask_Confirmation_Ok</bpmn2:incoming>
-    </bpmn2:endEvent>
-    <bpmn2:serviceTask id="ServiceTask_Dummy" camunda:async="true" camunda:class="de.hsansbach.ecommerce.process.RandomNumberDelegate" name="Dummy Service Task">
+    <bpmn2:sequenceFlow id="Flow_StartEvent_Ok" sourceRef="StartEvent" targetRef="ServiceTask_RandomNumberExpression"/>
+    <bpmn2:serviceTask id="ServiceTask_RandomNumberExpression" camunda:async="true" camunda:expression="#{randomNumberBean.execute()}" camunda:resultVariable="randomNumberExpression" name="Random Number Expression Task">
       <bpmn2:incoming>Flow_StartEvent_Ok</bpmn2:incoming>
-      <bpmn2:outgoing>Flow_ServiceTask_Dummy_Ok</bpmn2:outgoing>
+      <bpmn2:outgoing>Flow_ServiceTask_RandomNumberExpression_Ok</bpmn2:outgoing>
     </bpmn2:serviceTask>
-    <bpmn2:sequenceFlow id="Flow_ServiceTask_Dummy_Ok" name="" sourceRef="ServiceTask_Dummy" targetRef="UserTask_Confirmation"/>
+    <bpmn2:sequenceFlow id="Flow_ServiceTask_RandomNumberExpression_Ok" name="" sourceRef="ServiceTask_RandomNumberExpression" targetRef="ServiceTask_RandomNumberDelegate"/>
     <bpmn2:userTask id="UserTask_Confirmation" camunda:assignee="${assignee}" name="Confirmation User Task">
-      <bpmn2:incoming>Flow_ServiceTask_Dummy_Ok</bpmn2:incoming>
+      <bpmn2:incoming>Flow_ServiceTask_RandomNumberDelegate_Ok</bpmn2:incoming>
       <bpmn2:outgoing>Flow_UserTask_Confirmation_Ok</bpmn2:outgoing>
     </bpmn2:userTask>
     <bpmn2:sequenceFlow id="Flow_UserTask_Confirmation_Ok" sourceRef="UserTask_Confirmation" targetRef="EndEvent"/>
+    <bpmn2:endEvent id="EndEvent" name="End">
+      <bpmn2:incoming>Flow_UserTask_Confirmation_Ok</bpmn2:incoming>
+    </bpmn2:endEvent>
+    <bpmn2:serviceTask id="ServiceTask_RandomNumberDelegate" camunda:class="de.hsansbach.ecommerce.process.bean.RandomNumberDelegate" name="Random Number Delegate">
+      <bpmn2:incoming>Flow_ServiceTask_RandomNumberExpression_Ok</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_ServiceTask_RandomNumberDelegate_Ok</bpmn2:outgoing>
+    </bpmn2:serviceTask>
+    <bpmn2:sequenceFlow id="Flow_ServiceTask_RandomNumberDelegate_Ok" name="" sourceRef="ServiceTask_RandomNumberDelegate" targetRef="UserTask_Confirmation"/>
   </bpmn2:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Sample">
@@ -25,7 +30,7 @@
         <dc:Bounds height="36.0" width="36.0" x="65.0" y="97.0"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="_BPMNShape_UserTask_3" bpmnElement="UserTask_Confirmation">
-        <dc:Bounds height="80.0" width="100.0" x="300.0" y="75.0"/>
+        <dc:Bounds height="80.0" width="100.0" x="425.0" y="76.0"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_1" bpmnElement="Flow_StartEvent_Ok" sourceElement="_BPMNShape_StartEvent_3" targetElement="_BPMNShape_ServiceTask_2">
         <di:waypoint xsi:type="dc:Point" x="101.0" y="115.0"/>
@@ -34,24 +39,39 @@
           <dc:Bounds height="0.0" width="0.0" x="126.0" y="115.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="_BPMNShape_ServiceTask_2" bpmnElement="ServiceTask_Dummy">
+      <bpmndi:BPMNShape id="_BPMNShape_ServiceTask_2" bpmnElement="ServiceTask_RandomNumberExpression">
         <dc:Bounds height="80.0" width="100.0" x="153.0" y="75.0"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_2" bpmnElement="Flow_UserTask_Confirmation_Ok" sourceElement="_BPMNShape_UserTask_3" targetElement="_BPMNShape_EndEvent_3">
-        <di:waypoint xsi:type="dc:Point" x="400.0" y="115.0"/>
-        <di:waypoint xsi:type="dc:Point" x="451.0" y="115.0"/>
+        <di:waypoint xsi:type="dc:Point" x="525.0" y="116.0"/>
+        <di:waypoint xsi:type="dc:Point" x="576.0" y="116.0"/>
         <bpmndi:BPMNLabel>
-          <dc:Bounds height="0.0" width="0.0" x="425.0" y="115.0"/>
+          <dc:Bounds height="0.0" width="0.0" x="550.0" y="116.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="_BPMNShape_EndEvent_3" bpmnElement="EndEvent">
-        <dc:Bounds height="36.0" width="36.0" x="451.0" y="97.0"/>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_3" bpmnElement="Flow_ServiceTask_Dummy_Ok" sourceElement="_BPMNShape_ServiceTask_2" targetElement="_BPMNShape_UserTask_3">
-        <di:waypoint xsi:type="dc:Point" x="253.0" y="115.0"/>
-        <di:waypoint xsi:type="dc:Point" x="300.0" y="115.0"/>
+        <dc:Bounds height="36.0" width="36.0" x="576.0" y="98.0"/>
         <bpmndi:BPMNLabel>
-          <dc:Bounds height="6.0" width="6.0" x="275.0" y="115.0"/>
+          <dc:Bounds height="22.0" width="29.0" x="580.0" y="139.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_ServiceTask_3" bpmnElement="ServiceTask_RandomNumberDelegate">
+        <dc:Bounds height="80.0" width="100.0" x="288.0" y="75.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_4" bpmnElement="Flow_ServiceTask_RandomNumberExpression_Ok" sourceElement="_BPMNShape_ServiceTask_2" targetElement="_BPMNShape_ServiceTask_3">
+        <di:waypoint xsi:type="dc:Point" x="253.0" y="115.0"/>
+        <di:waypoint xsi:type="dc:Point" x="288.0" y="115.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="6.0" width="6.0" x="268.0" y="115.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_5" bpmnElement="Flow_ServiceTask_RandomNumberDelegate_Ok" sourceElement="_BPMNShape_ServiceTask_3" targetElement="_BPMNShape_UserTask_3">
+        <di:waypoint xsi:type="dc:Point" x="388.0" y="115.0"/>
+        <di:waypoint xsi:type="dc:Point" x="406.0" y="115.0"/>
+        <di:waypoint xsi:type="dc:Point" x="406.0" y="116.0"/>
+        <di:waypoint xsi:type="dc:Point" x="425.0" y="116.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="6.0" width="6.0" x="403.0" y="116.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>

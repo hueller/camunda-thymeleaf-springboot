@@ -1,4 +1,4 @@
-package de.hsansbach.ecommerce.process;
+package de.hsansbach.ecommerce.process.bean;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -11,7 +11,7 @@ public class RandomNumberDelegate implements JavaDelegate {
 	public void execute(DelegateExecution delegateExecution) throws Exception {
 		int randomNumber = ThreadLocalRandom.current().nextInt(100);
 
-		delegateExecution.setVariable("randomNumber", randomNumber);
+		delegateExecution.setVariable("randomNumberDelegate", randomNumber);
 	}
 
 }
