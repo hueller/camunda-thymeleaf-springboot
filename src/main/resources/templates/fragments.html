@@ -47,12 +47,12 @@
 					</div>
 					<button type="submit" class="btn btn-success">Login</button>
 				</form>
-				<ul class="nav navbar-nav">
-					<li th:if="${loggedIn}" th:classappend="${active == 'Home'} ? active"><a th:href="@{/}">Home</a></li>
-					<li th:if="${loggedIn}" th:classappend="${active == 'Processes'} ? active"><a th:href="@{/processes/}">Processes</a></li>
-					<li th:if="${loggedIn}" th:classappend="${active == 'Tasks'} ? active"><a th:href="@{/tasks/}">Tasks</a></li>
-					<li th:if="${loggedIn}"><a th:href="@{/app/}" target="_blank">Camunda Webapps</a></li>
-					<li th:if="${loggedIn}"><a th:href="@{/h2-console/}" target="_blank">H2 Console</a></li>
+				<ul th:if="${loggedIn}"  class="nav navbar-nav">
+					<li th:classappend="${active == 'Home'} ? active"><a th:href="@{/}">Home</a></li>
+					<li th:classappend="${active == 'Processes'} ? active"><a th:href="@{/processes/}">Processes</a></li>
+					<li th:classappend="${active == 'Tasks'} ? active"><a th:href="@{/tasks/}">Tasks</a></li>
+					<li><a th:href="@{/app/}" target="_blank">Camunda Webapps</a></li>
+					<li><a th:href="@{/h2-console/}" target="_blank">H2 Console</a></li>
 				</ul>
 				<ul th:if="${loggedIn}" class="nav navbar-nav navbar-right">
 					<li><a th:href="@{/logout}">Logout</a></li>
@@ -70,8 +70,6 @@
 		<!-- Placed at the end of the document so the pages load faster -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		<script th:src="@{/js/bootstrap.min.js}"></script>
-		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-		<script th:src="@{/js/ie10-viewport-bug-workaround.js}"></script>
 	</div>
 </body>
 
