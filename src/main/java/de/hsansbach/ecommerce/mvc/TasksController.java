@@ -4,8 +4,8 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import org.camunda.bpm.engine.TaskService;
 import org.camunda.bpm.engine.task.Task;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
@@ -18,20 +18,18 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import de.hsansbach.ecommerce.mvc.model.TaskModel;
+import de.hsansbach.ecommerce.process.CamundaProcessService;
 
 @Controller
 @RequestMapping("/tasks")
 public class TasksController {
 
-	private TaskService taskService;
-
-	public TasksController(TaskService taskService) {
-		this.taskService = taskService;
-	}
+	@Autowired
+	private CamundaProcessService camundaProcessService;
 
 	@GetMapping()
 	public String tasks(@AuthenticationPrincipal User user, @ModelAttribute TaskModel taskModel, Model model) {
-		List<Task> assignedTasks = taskService.createTaskQuery().taskAssignee(user.getUsername()).list();
+		List<Task> assignedTasks = camundaProcessService.getTasksForAssigne(user.getUsername());
 		model.addAttribute("assignedTasks", assignedTasks);
 
 		return "tasks";
@@ -39,7 +37,7 @@ public class TasksController {
 	
 	@PostMapping()
 	public ModelAndView complete(@Valid TaskModel taskModel, RedirectAttributes redirect) {
-		taskService.complete(taskModel.getId());
+		camundaProcessService.completeTask(taskModel.getId());
 		
 		redirect.addFlashAttribute("globalMessage", "Successfully completed task id " + taskModel.getId() + ".");
 		return new ModelAndView("redirect:/tasks");

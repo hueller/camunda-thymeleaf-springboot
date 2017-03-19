@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
@@ -23,11 +24,8 @@ import de.hsansbach.ecommerce.process.CamundaProcessService;
 @RequestMapping("/processes")
 public class ProcessesController {
 
+	@Autowired
 	private CamundaProcessService camundaProcessService;
-
-	public ProcessesController(CamundaProcessService camundaProcessService) {
-		this.camundaProcessService = camundaProcessService;
-	}
 
 	@GetMapping()
 	public String processes(@ModelAttribute ProcessModel processModel) {
