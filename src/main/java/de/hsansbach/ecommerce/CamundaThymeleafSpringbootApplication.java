@@ -6,9 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @EnableProcessApplication
-public class CamundaSpringbootThymeleafApplication {
+public class CamundaThymeleafSpringbootApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CamundaSpringbootThymeleafApplication.class, args);
+		SpringApplication.run(CamundaThymeleafSpringbootApplication.class, args);
 	}
 }

@@ -18,10 +18,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import de.hsansbach.ecommerce.CamundaSpringbootThymeleafApplication;
+import de.hsansbach.ecommerce.CamundaThymeleafSpringbootApplication;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = CamundaSpringbootThymeleafApplication.class)
+@SpringBootTest(classes = CamundaThymeleafSpringbootApplication.class)
 public class SampleProcessTest extends AbstractProcessTest {
 	
 	@Autowired
