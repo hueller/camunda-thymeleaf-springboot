@@ -16,7 +16,7 @@
 			<div class="col-md-12">
 				<h3>Process 'Sample'</h3>
 			</div>
-			<form class="form-horizontal" th:action="@{/processes}" th:object="${processModel}" method="post">
+			<form class="form-horizontal" th:action="@{/processes}" th:object="${processesModel}" method="post">
 				<div class="col-md-12" th:if="${#fields.hasErrors('*')}">
 					<p th:each="error : ${#fields.errors('*')}" th:text="${error}" class="alert alert-danger"></p>
 				</div>

@@ -28,7 +28,7 @@
 						<td th:text="${assignedTask.name}"></td>
 						<td th:text="${assignedTask.assignee}"></td>
 						<td>
-							<form th:action="@{/tasks}" th:object="${taskModel}" method="post">
+							<form th:action="@{/tasks}" th:object="${tasksModel}" method="post">
 								<input type="hidden" id="id" name="id" th:value="${assignedTask.id}" />
 								<button class="btn btn-primary" type="submit">Complete</button>
 							</form>

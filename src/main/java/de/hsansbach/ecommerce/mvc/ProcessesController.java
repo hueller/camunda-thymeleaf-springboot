@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import de.hsansbach.ecommerce.mvc.model.ProcessModel;
+import de.hsansbach.ecommerce.mvc.model.ProcessesModel;
 import de.hsansbach.ecommerce.process.CamundaProcessService;
 
 @Controller
@@ -28,12 +28,12 @@ public class ProcessesController {
 	private CamundaProcessService camundaProcessService;
 
 	@GetMapping()
-	public String processes(@ModelAttribute ProcessModel processModel) {
+	public String processes(@ModelAttribute ProcessesModel processModel) {
 		return "processes";
 	}
 
 	@PostMapping()
-	public ModelAndView startProcess(@AuthenticationPrincipal User user, @Valid ProcessModel processModel, BindingResult result,
+	public ModelAndView startProcess(@AuthenticationPrincipal User user, @Valid ProcessesModel processModel, BindingResult result,
 			RedirectAttributes redirect) {
 		if (result.hasErrors()) {
 			return new ModelAndView("processes", "formErrors", result.getAllErrors());
