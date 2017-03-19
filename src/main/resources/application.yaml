@@ -25,3 +25,9 @@ spring:
 security:
   basic:
     enabled: false
+    
+############################
+# Tomcat
+############################
+server:
+    port: 9090
