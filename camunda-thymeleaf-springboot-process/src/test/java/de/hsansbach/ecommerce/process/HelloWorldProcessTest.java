@@ -10,10 +10,10 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import de.hsansbach.ecommerce.CamundaThymeleafSpringbootApplication;
+import de.hsansbach.ecommerce.CamundaThymeleafSpringbootProcess;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = CamundaThymeleafSpringbootApplication.class)
+@SpringBootTest(classes = CamundaThymeleafSpringbootProcess.class)
 public class HelloWorldProcessTest extends AbstractProcessTest {
 
 	@Test

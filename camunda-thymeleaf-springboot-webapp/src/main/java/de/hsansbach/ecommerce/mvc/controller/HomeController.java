@@ -5,10 +5,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/home")
+@RequestMapping("/")
 public class HomeController extends AbstractController {
 	
 	@GetMapping()
+	public String root() {
+		return home();
+	}
+	
+	@GetMapping("/home")
 	public String home() {
 		return "home";
 	}
