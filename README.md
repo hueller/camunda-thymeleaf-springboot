@@ -12,3 +12,7 @@ Working project for lecture 'eBusiness Anwendungsentwicklung' at Ansbach Univers
 2) Check Java and Maven version using command line
    - `java -version`
    - `mvn -version`
+
+3) Run application
+   - Go to directory `camunda-thymeleaf-springboot-webapp`
+   - Type `mvn spring-boot:run`
