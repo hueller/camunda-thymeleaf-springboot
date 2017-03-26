@@ -43,7 +43,7 @@
 				<scope>import</scope>
 			</dependency>
 
-			<!-- External libraries -->
+			<!-- Webjars -->
 			<dependency>
 				<groupId>org.webjars</groupId>
 				<artifactId>bootstrap</artifactId>
