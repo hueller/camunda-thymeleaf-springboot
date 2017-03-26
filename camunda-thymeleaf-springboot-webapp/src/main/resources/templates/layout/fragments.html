@@ -27,18 +27,16 @@
 	<nav th:fragment="navbar" class="navbar navbar-default navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-					aria-controls="navbar">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 					<span class="sr-only">Toggle navigation</span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a th:href="@{/home}">
-					<img alt="HS Ansbach" th:src="@{/img/hsansbach_120px.png}" class="navbar-brand full" />
+				<a th:href="@{/home}"> <img alt="HS Ansbach" th:src="@{/img/hsansbach_120px.png}" class="navbar-brand full" />
 				</a>
 			</div>
-			
+
 			<div id="navbar" class="collapse navbar-collapse">
 				<form class="navbar-form navbar-right" th:if="${loggedIn == null}" th:action="@{/login}" method="post">
 					<div class="form-group">
@@ -49,16 +47,23 @@
 					</div>
 					<button type="submit" class="btn btn-success">Login</button>
 				</form>
-				<ul th:if="${loggedIn}"  class="nav navbar-nav">
+				<ul th:if="${loggedIn}" class="nav navbar-nav">
 					<li th:classappend="${active == 'Home'} ? active"><a th:href="@{/home}">Home</a></li>
 					<li th:classappend="${active == 'Processes'} ? active"><a th:href="@{/processes/}">Processes</a></li>
 					<li th:classappend="${active == 'Tasks'} ? active"><a th:href="@{/tasks/}">Tasks</a></li>
-					<li><a th:href="@{/app/}" target="_blank">Camunda Webapps</a></li>
-					<li><a th:href="@{/h2-console/}" target="_blank">H2 Console</a></li>
+					<li><a th:href="@{/app/}" target="_blank"><span class="dropup"><span class="caret"></span></span> Camunda</a></li>
+					<li><a th:href="@{/h2-console/}" target="_blank"><span class="dropup"><span class="caret"></span></span> H2 Console</a></li>
 				</ul>
-				<ul th:if="${loggedIn}" class="nav navbar-nav navbar-right">
-					<li><a th:href="@{/logout}">Logout</a></li>
-				</ul>
+				<form th:if="${loggedIn}" class="navbar-form navbar-right">
+					<div class="btn-group">
+						<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<span th:text ="${#authentication.getPrincipal().getUsername()}"></span> <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu">
+							<li><a th:href="@{/logout}">Logout</a></li>
+						</ul>
+					</div>
+				</form>
 			</div>
 		</div>
 	</nav>
