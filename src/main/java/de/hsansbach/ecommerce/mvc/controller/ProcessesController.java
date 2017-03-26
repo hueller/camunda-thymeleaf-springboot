@@ -1,4 +1,4 @@
-package de.hsansbach.ecommerce.mvc;
+package de.hsansbach.ecommerce.mvc.controller;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,8 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import de.hsansbach.ecommerce.mvc.model.ProcessesModel;
+import de.hsansbach.ecommerce.mvc.model.UserTaskModel;
 import de.hsansbach.ecommerce.process.CamundaProcessService;
+import de.hsansbach.ecommerce.process.ProcessKey;
 
 @Controller
 @RequestMapping("/processes")
@@ -28,12 +29,12 @@ public class ProcessesController {
 	private CamundaProcessService camundaProcessService;
 
 	@GetMapping()
-	public String processes(@ModelAttribute ProcessesModel processModel) {
+	public String processes(@ModelAttribute UserTaskModel userTaskModel) {
 		return "processes";
 	}
 
-	@PostMapping()
-	public ModelAndView startProcess(@AuthenticationPrincipal User user, @Valid ProcessesModel processModel, BindingResult result,
+	@PostMapping("/userTask")
+	public ModelAndView startProcess(@AuthenticationPrincipal User user, @Valid UserTaskModel processModel, BindingResult result,
 			RedirectAttributes redirect) {
 		if (result.hasErrors()) {
 			return new ModelAndView("processes", "formErrors", result.getAllErrors());
@@ -42,9 +43,17 @@ public class ProcessesController {
 		Map<String, Object> variables = new HashMap<>();
 		variables.put("assignee", user.getUsername());
 		variables.put("text", processModel.getText());
-		camundaProcessService.startProcess("Sample", variables);
+		String processInstanceId = camundaProcessService.startProcess(ProcessKey.USER_TASK, variables);
 
-		redirect.addFlashAttribute("globalMessage", "Successfully started process 'Sample'.");
+		redirect.addFlashAttribute("globalMessage", "Successfully started process 'User Task' with id " + processInstanceId + ".");
+		return new ModelAndView("redirect:/processes");
+	}
+
+	@PostMapping("/helloWorld")
+	public ModelAndView startProcess(RedirectAttributes redirect) {
+		String processInstanceId = camundaProcessService.startProcess(ProcessKey.HELLO_WORLD);
+
+		redirect.addFlashAttribute("globalMessage", "Successfully started process 'Hello World' with id " + processInstanceId + ".");
 		return new ModelAndView("redirect:/processes");
 	}
 }

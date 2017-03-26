@@ -2,7 +2,7 @@ package de.hsansbach.ecommerce.mvc.model;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-public class TasksModel {
+public class CompleteTasksModel {
 
 	@NotEmpty(message = "Id is required.")
 	private String id;

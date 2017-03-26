@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="fragments :: head(title='Login')">
+<head th:replace="layout/fragments :: head(title='HS Ansbach : Login')">
 </head>
 
 <body>
-	<nav th:replace="fragments :: navbar"></nav>
+	<nav th:replace="layout/fragments :: navbar"></nav>
 
 	<div class="container">
 		<div class="content">
-			<div th:replace="fragments :: global_message"></div>
+			<div th:replace="layout/fragments :: global_message"></div>
 
 			<p th:if="${param.logout}" class="alert alert-success top-buffer-md">Logout successfully.</p>
 			<p th:if="${param.error}" class="alert alert-danger top-buffer-md">Authentication error. Please check your credentials.</p>
@@ -107,6 +107,6 @@
 		</div>
 	</div>
 
-	<div th:replace="fragments :: bootstrap_js"></div>
+	<div th:replace="layout/fragments :: bootstrap_js"></div>
 </body>
 </html>

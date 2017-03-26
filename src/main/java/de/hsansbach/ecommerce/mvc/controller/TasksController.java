@@ -1,4 +1,4 @@
-package de.hsansbach.ecommerce.mvc;
+package de.hsansbach.ecommerce.mvc.controller;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import de.hsansbach.ecommerce.mvc.model.TasksModel;
+import de.hsansbach.ecommerce.mvc.model.CompleteTasksModel;
 import de.hsansbach.ecommerce.process.CamundaProcessService;
 
 @Controller
@@ -28,7 +28,7 @@ public class TasksController {
 	private CamundaProcessService camundaProcessService;
 
 	@GetMapping()
-	public String tasks(@AuthenticationPrincipal User user, @ModelAttribute TasksModel taskModel, Model model) {
+	public String tasks(@AuthenticationPrincipal User user, @ModelAttribute CompleteTasksModel completeTaskModel, Model model) {
 		List<Task> assignedTasks = camundaProcessService.getTasksForAssigne(user.getUsername());
 		model.addAttribute("assignedTasks", assignedTasks);
 
@@ -36,10 +36,10 @@ public class TasksController {
 	}
 	
 	@PostMapping()
-	public ModelAndView complete(@Valid TasksModel taskModel, RedirectAttributes redirect) {
-		camundaProcessService.completeTask(taskModel.getId());
+	public ModelAndView complete(@Valid CompleteTasksModel completeTaskModel, RedirectAttributes redirect) {
+		camundaProcessService.completeTask(completeTaskModel.getId());
 		
-		redirect.addFlashAttribute("globalMessage", "Successfully completed task id " + taskModel.getId() + ".");
+		redirect.addFlashAttribute("globalMessage", "Successfully completed task id " + completeTaskModel.getId() + ".");
 		return new ModelAndView("redirect:/tasks");
 	}
 

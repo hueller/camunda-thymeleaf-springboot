@@ -1,22 +1,33 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="fragments :: head(title='Processes')">
+<head th:replace="layout/fragments :: head(title='HS Ansbach : Processes')">
 </head>
 
 <body>
-	<nav th:replace="fragments :: navbar(active='Processes', loggedIn='true')"></nav>
+	<nav th:replace="layout/fragments :: navbar(active='Processes', loggedIn='true')"></nav>
 
 	<div class="container">
 		<h2>Processes</h2>
 		
-		<div th:replace="fragments :: global_message"></div>
-
+		<div th:replace="layout/fragments :: global_message"></div>
+		
 		<div class="row">
 			<div class="col-md-12">
-				<h3>Process 'Sample'</h3>
+				<h3>Process 'Hello World'</h3>
 			</div>
-			<form class="form-horizontal" th:action="@{/processes}" th:object="${processesModel}" method="post">
+			<div class="col-md-12">
+				<form class="form-horizontal" th:action="@{/processes/helloWorld}" method="post">
+					<button class="btn btn-primary" type="submit">Start</button>
+				</form>
+			</div>
+		</div>
+
+		<div class="row top-buffer-sm">
+			<div class="col-md-12">
+				<h3>Process 'User Task'</h3>
+			</div>
+			<form class="form-horizontal" th:action="@{/processes/userTask}" th:object="${userTaskModel}" method="post">
 				<div class="col-md-12" th:if="${#fields.hasErrors('*')}">
 					<p th:each="error : ${#fields.errors('*')}" th:text="${error}" class="alert alert-danger"></p>
 				</div>
@@ -33,6 +44,6 @@
 		</div>
 	</div>
 
-	<div th:replace="fragments :: bootstrap_js"></div>
+	<div th:replace="layout/fragments :: bootstrap_js"></div>
 </body>
 </html>

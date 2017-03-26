@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="fragments :: head(title='Home')">
+<head th:replace="layout/fragments :: head(title='HS Ansbach : Home')">
 </head>
 
 <body>
-	<nav th:replace="fragments :: navbar(active='Home', loggedIn='true')"></nav>
+	<nav th:replace="layout/fragments :: navbar(active='Home', loggedIn='true')"></nav>
 
 	<div class="container">
 		<h2>Home</h2>
 		
-		<div th:replace="fragments :: global_message"></div>
+		<div th:replace="layout/fragments :: global_message"></div>
 	</div>
 
-	<div th:replace="fragments :: bootstrap_js"></div>
+	<div th:replace="layout/fragments :: bootstrap_js"></div>
 </body>
 </html>

@@ -5,16 +5,12 @@ import static org.junit.Assert.assertEquals;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.camunda.bpm.engine.ProcessEngine;
-import org.camunda.bpm.engine.RuntimeService;
-import org.camunda.bpm.engine.TaskService;
 import org.camunda.bpm.engine.impl.ProcessEngineImpl;
 import org.camunda.bpm.engine.impl.test.TestHelper;
 import org.camunda.bpm.engine.task.Task;
 import org.camunda.bpm.engine.test.Deployment;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -22,31 +18,22 @@ import de.hsansbach.ecommerce.CamundaThymeleafSpringbootApplication;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = CamundaThymeleafSpringbootApplication.class)
-public class SampleProcessTest extends AbstractProcessTest {
-	
-	@Autowired
-	private ProcessEngine processEngine;
-
-	@Autowired
-	private RuntimeService runtimeService;
-
-	@Autowired
-	private TaskService taskService;
+public class UserTaskProcessTest extends AbstractProcessTest {
 
 	@Test
 	@Deployment
 	public void simpleProcessTest() {
-		runtimeService.startProcessInstanceByKey("Sample", defaultVariables());
+		camundaProcessService.startProcess(ProcessKey.USER_TASK, defaultVariables());
 		
 		TestHelper.waitForJobExecutorToProcessAllJobs(((ProcessEngineImpl) processEngine).getProcessEngineConfiguration(), 10000, 50);
 
-		Task task = taskService.createTaskQuery().singleResult();
+		Task task = camundaProcessService.getTaskService().createTaskQuery().singleResult();
 		assertEquals("Confirmation User Task", task.getName());
 		assertEquals(defaultAssignee, task.getAssignee());
 		
-		taskService.complete(task.getId());
+		camundaProcessService.completeTask(task.getId());
 
-		assertEquals(0, runtimeService.createProcessInstanceQuery().count());
+		assertEquals(0, camundaProcessService.getRuntimeService().createProcessInstanceQuery().count());
 	}
 	
 	private Map<String, Object> defaultVariables() {

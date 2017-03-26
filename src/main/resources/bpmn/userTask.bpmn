@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd" id="_ll67ABGYEeW7xqkBzIjHqw" exporter="camunda modeler" exporterVersion="2.7.0" targetNamespace="http://camunda.org/schema/1.0/bpmn">
-  <bpmn2:process id="Sample" name="Sample" isExecutable="true">
+  <bpmn2:process id="USER_TASK" name="User Task" isExecutable="true">
     <bpmn2:startEvent id="StartEvent" name="Start">
       <bpmn2:outgoing>Flow_StartEvent_Ok</bpmn2:outgoing>
     </bpmn2:startEvent>
@@ -25,7 +25,7 @@
     <bpmn2:sequenceFlow id="Flow_ServiceTask_RandomNumberDelegate_Ok" name="" sourceRef="ServiceTask_RandomNumberDelegate" targetRef="UserTask_Confirmation"/>
   </bpmn2:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
-    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Sample">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="USER_TASK">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_3" bpmnElement="StartEvent">
         <dc:Bounds height="36.0" width="36.0" x="65.0" y="97.0"/>
       </bpmndi:BPMNShape>

@@ -2,7 +2,7 @@ package de.hsansbach.ecommerce.mvc.model;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-public class ProcessesModel {
+public class UserTaskModel {
 
 	@NotEmpty(message = "Text is required.")
 	private String text;
