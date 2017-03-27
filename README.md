@@ -1,7 +1,7 @@
 camunda-thymeleaf-springboot
 ============================
 
-Working project for lecture 'eBusiness Anwendungsentwicklung' at Ansbach University of Applied Sciences, 2017
+Working project using Camunda BPM, Spring Boot and Thymeleaf for lecture 'eBusiness Anwendungsentwicklung' at Ansbach University of Applied Sciences, 2017.
 
 1) Prerequisites
    - Java SE 8 (http://www.oracle.com/technetwork/java/javase/downloads/index.html)
