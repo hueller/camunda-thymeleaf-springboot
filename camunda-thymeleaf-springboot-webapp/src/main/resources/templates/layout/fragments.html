@@ -51,8 +51,8 @@
 					<li th:classappend="${active == 'Home'} ? active"><a th:href="@{/home}">Home</a></li>
 					<li th:classappend="${active == 'Processes'} ? active"><a th:href="@{/processes/}">Processes</a></li>
 					<li th:classappend="${active == 'Tasks'} ? active"><a th:href="@{/tasks/}">Tasks</a></li>
-					<li><a th:href="@{/app/}" target="_blank"><span class="dropup"><span class="caret"></span></span> Camunda</a></li>
-					<li><a th:href="@{/h2-console/}" target="_blank"><span class="dropup"><span class="caret"></span></span> H2 Console</a></li>
+					<li sec:authorize="hasRole('ADMIN')"><a th:href="@{/app/}" target="_blank"><span class="dropup"><span class="caret"></span></span> Camunda</a></li>
+					<li sec:authorize="hasRole('ADMIN')"><a th:href="@{/h2-console/}" target="_blank"><span class="dropup"><span class="caret"></span></span> H2 Console</a></li>
 				</ul>
 				<form th:if="${loggedIn}" class="navbar-form navbar-right">
 					<div class="btn-group">
