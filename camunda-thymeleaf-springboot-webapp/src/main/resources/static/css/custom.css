@@ -8,6 +8,10 @@ body {
 	text-align: center;
 }
 
+.navbar-form {
+	border:none !important;
+}
+
 .navbar-brand.full {
 	padding: 2px;
 	margin-right: 5px;
