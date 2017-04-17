@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 
 public abstract class AbstractLoggingListener implements ExecutionListener {
 
-	protected static final Logger LOG = LoggerFactory.getLogger(ExecutionListener.class);
+	protected static final Logger LOG = LoggerFactory.getLogger(AbstractLoggingListener.class);
 
 	@Override
 	public void notify(DelegateExecution execution) throws Exception {
@@ -35,6 +35,8 @@ public abstract class AbstractLoggingListener implements ExecutionListener {
 
 	private String convertToString(VariableMap variableMap) {
 		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append("{");
+		
 		boolean isFirst = true;
 		for (Entry<String, Object> variable : variableMap.entrySet()) {
 			if (!isFirst) {
@@ -45,6 +47,7 @@ public abstract class AbstractLoggingListener implements ExecutionListener {
 			stringBuilder.append(variable.getValue());
 			isFirst = false;
 		}
+		
 		stringBuilder.append("}");
 		return stringBuilder.toString();
 	}

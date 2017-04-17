@@ -7,6 +7,7 @@ import org.camunda.bpm.engine.impl.util.xml.Element;
 
 public class LoggingUserTaskExecutionParseListener extends LoggingBpmnParseListener {
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public void parseUserTask(Element userTaskElement, ScopeImpl scope, ActivityImpl activity) {
 		activity.addExecutionListener(ExecutionListener.EVENTNAME_START, loggingUserTaskExecutionListener);

@@ -7,12 +7,14 @@ import org.camunda.bpm.engine.impl.util.xml.Element;
 
 public class LoggingStartEndEventExecutionParseListener extends LoggingBpmnParseListener {
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public void parseStartEvent(Element startEventElement, ScopeImpl scope, ActivityImpl activity) {
 		activity.addExecutionListener(ExecutionListener.EVENTNAME_START, loggingStartEndEventExecutionListener);
 		super.parseStartEvent(startEventElement, scope, activity);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public void parseEndEvent(Element endEventElement, ScopeImpl scope, ActivityImpl activity) {
 		activity.addExecutionListener(ExecutionListener.EVENTNAME_START, loggingStartEndEventExecutionListener);

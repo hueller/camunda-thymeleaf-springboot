@@ -6,6 +6,7 @@ import org.camunda.bpm.engine.impl.util.xml.Element;
 
 public class LoggingTransitionParseListener extends LoggingBpmnParseListener {
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public void parseSequenceFlow(Element sequenceFlowElement, ScopeImpl scopeElement, TransitionImpl transition) {
 		transition.addExecutionListener(loggingTransitionListener);
