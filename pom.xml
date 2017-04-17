@@ -17,6 +17,8 @@
 	<modules>
 		<module>camunda-thymeleaf-springboot-webapp</module>
 		<module>camunda-thymeleaf-springboot-process</module>
+		<module>camunda-thymeleaf-springboot-domain</module>
+		<module>camunda-thymeleaf-springboot-engine</module>
 	</modules>
 
 	<properties>
@@ -63,6 +65,16 @@
 			</dependency>
 
 			<!-- Internal dependencies -->
+			<dependency>
+				<groupId>de.hsansbach.ecommerce</groupId>
+				<artifactId>camunda-thymeleaf-springboot-domain</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>de.hsansbach.ecommerce</groupId>
+				<artifactId>camunda-thymeleaf-springboot-engine</artifactId>
+				<version>${project.version}</version>
+			</dependency>
 			<dependency>
 				<groupId>de.hsansbach.ecommerce</groupId>
 				<artifactId>camunda-thymeleaf-springboot-process</artifactId>

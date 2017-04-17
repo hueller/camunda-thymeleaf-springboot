@@ -8,32 +8,13 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	
-	<artifactId>camunda-thymeleaf-springboot-process</artifactId>
+	<artifactId>camunda-thymeleaf-springboot-engine</artifactId>
 
 	<dependencies>
-		<!-- Camunda Spring Boot starter -->
 		<dependency>
 			<groupId>org.camunda.bpm.extension.springboot</groupId>
 			<artifactId>camunda-bpm-spring-boot-starter</artifactId>
 		</dependency>
-
-		<!-- External libraries -->
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-		</dependency>
-		
-		<!-- Internal dependencies -->
-		<dependency>
-			<groupId>de.hsansbach.ecommerce</groupId>
-			<artifactId>camunda-thymeleaf-springboot-domain</artifactId>
-		</dependency>
-
-		<!-- Test dependencies -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
 	</dependencies>
+
 </project>

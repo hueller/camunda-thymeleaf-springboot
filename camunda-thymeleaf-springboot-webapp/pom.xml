@@ -55,6 +55,10 @@
 		<!-- Internal dependencies -->
 		<dependency>
 			<groupId>de.hsansbach.ecommerce</groupId>
+			<artifactId>camunda-thymeleaf-springboot-engine</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>de.hsansbach.ecommerce</groupId>
 			<artifactId>camunda-thymeleaf-springboot-process</artifactId>
 		</dependency>
 
