@@ -53,12 +53,12 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Bean
     public InMemoryUserDetailsManager getInMemoryUserDetailsManager() {
 		List<GrantedAuthority> adminAuthorities = new ArrayList<GrantedAuthority>();
-		adminAuthorities.add(new SimpleGrantedAuthority("ADMIN"));
-		adminAuthorities.add(new SimpleGrantedAuthority("USER"));
+		adminAuthorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+		adminAuthorities.add(new SimpleGrantedAuthority("ROLE_USER"));
 		UserDetails admin = new User("admin", "admin", adminAuthorities);
 		
 		List<GrantedAuthority> userAuthorities = new ArrayList<GrantedAuthority>();
-		userAuthorities.add(new SimpleGrantedAuthority("USER"));
+		userAuthorities.add(new SimpleGrantedAuthority("ROLE_USER"));
 		UserDetails kermit = new User("kermit", "kermit", userAuthorities);
 		UserDetails gonzo = new User("gonzo", "gonzo", userAuthorities);
 		
