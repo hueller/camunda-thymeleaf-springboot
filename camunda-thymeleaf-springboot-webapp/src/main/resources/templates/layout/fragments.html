@@ -69,7 +69,7 @@
 	</nav>
 
 	<div th:fragment="global_message">
-		<p th:if="${globalMessage}" th:text="${globalMessage}" class="alert alert-success" />
+		<p th:if="${globalMessage}" th:text="${globalMessage}" class="alert" th:classappend="${classappend}" />
 	</div>
 
 	<div th:fragment="bootstrap_js">

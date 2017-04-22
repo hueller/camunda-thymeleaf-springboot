@@ -9,7 +9,7 @@
 
 	<div class="container">
 		<div class="content">
-			<div th:replace="layout/fragments :: global_message"></div>
+			<div th:replace="layout/fragments :: global_message(classappend='alert-success top-buffer-md')"></div>
 
 			<p th:if="${param.logout}" class="alert alert-success top-buffer-md">Logout successfully.</p>
 			<p th:if="${param.error}" class="alert alert-danger top-buffer-md">Authentication error. Please check your credentials.</p>
@@ -30,6 +30,8 @@
 						<tr>
 							<td><strong>Main application</strong></td>
 							<td>
+								<strong><a th:href="@{/register}">Register new user</a></strong><br /><br />
+								<strong>Predefined Users</strong>
 								<table class="table table-striped table-condensed table-bordered top-buffer-sm">
 									<tr>
 										<th>User</th>
