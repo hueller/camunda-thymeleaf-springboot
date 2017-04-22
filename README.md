@@ -14,6 +14,6 @@ Working project using Camunda BPM, Spring Boot and Thymeleaf for lecture 'eBusin
    - `mvn -version`
 
 3) Run application
-   - Go to directory `camunda-thymeleaf-springboot-webapp`
-   - Type `mvn spring-boot:run`
+   - Go to directory `camunda-thymeleaf-springboot` and type `mvn clean install`
+   - Go to directory `camunda-thymeleaf-springboot-webapp` and type `mvn spring-boot:run`
    - Open `http://localhost:9090`
