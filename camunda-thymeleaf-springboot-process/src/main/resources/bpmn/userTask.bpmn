@@ -5,7 +5,7 @@
       <bpmn2:outgoing>Flow_StartEvent_Ok</bpmn2:outgoing>
     </bpmn2:startEvent>
     <bpmn2:sequenceFlow id="Flow_StartEvent_Ok" sourceRef="StartEvent" targetRef="ServiceTask_RandomNumberExpression"/>
-    <bpmn2:serviceTask id="ServiceTask_RandomNumberExpression" camunda:async="true" camunda:expression="#{randomNumberBean.execute()}" camunda:resultVariable="randomNumberExpression" name="Random Number Expression Task">
+    <bpmn2:serviceTask id="ServiceTask_RandomNumberExpression" camunda:async="true" camunda:expression="#{randomNumberService.execute()}" camunda:resultVariable="randomNumberExpression" name="Random Number Expression Task">
       <bpmn2:incoming>Flow_StartEvent_Ok</bpmn2:incoming>
       <bpmn2:outgoing>Flow_ServiceTask_RandomNumberExpression_Ok</bpmn2:outgoing>
     </bpmn2:serviceTask>
@@ -18,7 +18,7 @@
     <bpmn2:endEvent id="EndEvent" name="End">
       <bpmn2:incoming>Flow_UserTask_Confirmation_Ok</bpmn2:incoming>
     </bpmn2:endEvent>
-    <bpmn2:serviceTask id="ServiceTask_RandomNumberDelegate" camunda:class="de.hsansbach.ecommerce.process.bean.RandomNumberDelegate" name="Random Number Delegate">
+    <bpmn2:serviceTask id="ServiceTask_RandomNumberDelegate" camunda:class="de.hsansbach.ecommerce.process.service.RandomNumberDelegate" name="Random Number Delegate">
       <bpmn2:incoming>Flow_ServiceTask_RandomNumberExpression_Ok</bpmn2:incoming>
       <bpmn2:outgoing>Flow_ServiceTask_RandomNumberDelegate_Ok</bpmn2:outgoing>
     </bpmn2:serviceTask>

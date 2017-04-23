@@ -42,16 +42,6 @@
 			<artifactId>jquery</artifactId>
 		</dependency>
 
-		<!-- External libraries -->
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-validator</artifactId>
-		</dependency>
-
 		<!-- Internal dependencies -->
 		<dependency>
 			<groupId>de.hsansbach.ecommerce</groupId>

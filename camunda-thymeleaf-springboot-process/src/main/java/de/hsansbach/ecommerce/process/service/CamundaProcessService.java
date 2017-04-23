@@ -1,4 +1,4 @@
-package de.hsansbach.ecommerce.process;
+package de.hsansbach.ecommerce.process.service;
 
 import java.util.List;
 import java.util.Map;
@@ -9,6 +9,8 @@ import org.camunda.bpm.engine.runtime.ProcessInstance;
 import org.camunda.bpm.engine.task.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import de.hsansbach.ecommerce.process.ProcessKey;
 
 @Service
 public class CamundaProcessService {

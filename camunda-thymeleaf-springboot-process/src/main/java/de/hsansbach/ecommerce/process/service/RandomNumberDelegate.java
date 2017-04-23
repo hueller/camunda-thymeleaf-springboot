@@ -1,4 +1,4 @@
-package de.hsansbach.ecommerce.process.bean;
+package de.hsansbach.ecommerce.process.service;
 
 import java.util.concurrent.ThreadLocalRandom;
 

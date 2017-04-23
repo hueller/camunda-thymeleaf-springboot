@@ -1,4 +1,4 @@
-package de.hsansbach.ecommerce.mvc.model;
+package de.hsansbach.ecommerce.process.model;
 
 import org.hibernate.validator.constraints.NotEmpty;
 

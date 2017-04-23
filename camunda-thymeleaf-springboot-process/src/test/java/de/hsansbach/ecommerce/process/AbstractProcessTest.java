@@ -3,7 +3,7 @@ package de.hsansbach.ecommerce.process;
 import org.camunda.bpm.engine.ProcessEngine;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import de.hsansbach.ecommerce.process.CamundaProcessService;
+import de.hsansbach.ecommerce.process.service.CamundaProcessService;
 
 public abstract class AbstractProcessTest {
 	
